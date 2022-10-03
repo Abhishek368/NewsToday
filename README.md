@@ -22,4 +22,3 @@ Live Breaking News app which uses [NewsAPI](https://newsapi.org/) to fetch Break
   <img src="https://user-images.githubusercontent.com/41854966/193615302-1fad4df9-19d9-4728-b62a-12ccbf153885.jpg" width="300" height="600"/>&nbsp; &nbsp;
   <img src="https://user-images.githubusercontent.com/41854966/193622608-8bfd9281-9b56-4f4d-909e-bac6ec404ab5.jpg" width="300" height="600"/>
 </p>
-![059ac575-8478-47c5-adeb-acb88f741e2e](https://user-images.githubusercontent.com/41854966/193622608-8bfd9281-9b56-4f4d-909e-bac6ec404ab5.jpg)
