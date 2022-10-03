@@ -1,5 +1,7 @@
 package com.example.indiannewsapp.ui
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -25,10 +27,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        //Customizing Action Bar
-//        supportActionBar?.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
-//        supportActionBar?.setCustomView(R.layout.custom_action_bar)
+        val colorDrawable = ColorDrawable(Color.parseColor("#FFFFFF"))
+//        Customizing Action Bar
+        supportActionBar?.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
+        supportActionBar?.setCustomView(R.layout.custom_action_bar)
+        supportActionBar?.setBackgroundDrawable(colorDrawable)
 
         //Initializing Viewmodel for all the fragments
         val repository = NewsRepository(ArticleDatabase(this))
