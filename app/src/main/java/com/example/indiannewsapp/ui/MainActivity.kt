@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.view.Window
 import androidx.appcompat.app.ActionBar
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -27,6 +30,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        window.statusBarColor = ContextCompat.getColor(this,R.color.cardview_dark_background)
         val colorDrawable = ColorDrawable(Color.parseColor("#FFFFFF"))
 //        Customizing Action Bar
         supportActionBar?.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
@@ -40,6 +44,15 @@ class MainActivity : AppCompatActivity() {
 
         //Setting up bottom navigation
         bottomNavigationView.setupWithNavController(newsNavHostFragment.findNavController())
+
+        newsNavHostFragment.findNavController().addOnDestinationChangedListener { controller, destination, arguments ->
+            when(destination.id){
+                R.id.searchNewsFragment,R.id.breakingNewsFragment,R.id.savedNewsFragment -> bottomNavigationView.visibility =
+                    View.VISIBLE
+
+                else -> bottomNavigationView.visibility=View.GONE
+            }
+        }
 
     }
 

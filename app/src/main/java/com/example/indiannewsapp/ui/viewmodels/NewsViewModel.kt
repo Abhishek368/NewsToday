@@ -60,6 +60,7 @@ class NewsViewModel(app: Application, val repository: NewsRepository):AndroidVie
         return Resource.Error(response.message())
     }
     private fun handleSearchNewsResponse(response: Response<NewsResponse>):Resource<NewsResponse>{
+        searchNewsResponse =  null
         if(response.isSuccessful){
             response.body()?.let {
                 searchNewsPage++

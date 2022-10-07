@@ -1,6 +1,8 @@
 package com.example.indiannewsapp.ui.fragments
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.AbsListView
@@ -41,17 +43,22 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
             findNavController().navigate(R.id.action_searchNewsFragment_to_articleFragment,bundle)
         }
         var job:Job?=null
+        var isSearched = false
         etSearch.addTextChangedListener {
             job?.cancel()
             job = MainScope().launch {
                 delay(SEARCH_NEWS_TIME_DELAY)
                 it?.let {
                     if(it.toString().isNotEmpty()){
+                        isSearched = true
                         vm.searchNews(it.toString())
                     }
                 }
             }
+
+
         }
+
 
 
         vm.searchNews.observe(viewLifecycleOwner, Observer {
@@ -129,4 +136,5 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
         }
 
     }
+
 }

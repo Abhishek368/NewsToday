@@ -2,6 +2,8 @@ package com.example.indiannewsapp.ui.fragments
 
 import android.os.Bundle
 import android.view.View
+import android.webkit.WebChromeClient
+import android.webkit.WebSettings
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
@@ -23,6 +25,10 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
         webView.apply {
             webViewClient = WebViewClient()
             loadUrl(article.url)
+            webChromeClient = WebChromeClient()
+            val webSettings = webView.settings
+            webSettings.javaScriptEnabled = true
+            webSettings.pluginState = WebSettings.PluginState.ON
         }
         floatingActionButton2.setOnClickListener {
             if(article.author == null){
